@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+/* RAENA marka paleti — Kurumsal Kimlik Kılavuzu v1.0
+   Kullanım oranı: %55 açık alan, %25 lacivert, %15 mor, %5 mint vurgu */
+@theme {
+  --color-navy: #11152b;
+  --color-navy-800: #1b2040;
+  --color-navy-700: #272d52;
+  --color-violet: #6c55f6;
+  --color-violet-600: #5a43e6;
+  --color-violet-700: #4834c7;
+  --color-violet-100: #ebe8fe;
+  --color-violet-50: #f4f2ff;
+  --color-mint: #46d7b4;
+  --color-mint-600: #2fbf9c;
+  --color-mint-100: #dcf8f0;
+  --color-cloud: #f6f7fb;
+  --color-ink: #11152b;
+  --color-muted: #5b6078;
+  --color-line: #e3e5ef;
+
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, "DejaVu Sans", sans-serif;
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.75rem;
+
+  --animate-float: float 8s ease-in-out infinite;
+  --animate-spin-slow: spin 28s linear infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-14px);
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+  }
+  ::selection {
+    @apply bg-violet text-white;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-violet;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+  .eyebrow {
+    @apply text-xs font-semibold tracking-[0.18em] text-violet uppercase;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-primary {
+    @apply bg-violet text-white shadow-[0_10px_30px_-10px_rgba(108,85,246,0.7)] hover:-translate-y-0.5 hover:bg-violet-600;
+  }
+  .btn-mint {
+    @apply bg-mint text-navy hover:-translate-y-0.5 hover:bg-mint-600;
+  }
+  .btn-ghost {
+    @apply border border-white/20 text-white hover:border-white/50 hover:bg-white/5;
+  }
+  .btn-outline {
+    @apply border border-line bg-white text-ink hover:border-violet hover:text-violet;
+  }
+  .card {
+    @apply rounded-3xl border border-line bg-white p-7 transition-all duration-300;
+  }
+  .card-hover {
+    @apply hover:-translate-y-1 hover:border-violet/40 hover:shadow-[0_24px_50px_-28px_rgba(17,21,43,0.35)];
+  }
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+}
+
+/* Blog / uzun metin tipografisi */
+.prose-raena {
+  @apply text-[17px] leading-8 text-[#2c3150];
+}
+.prose-raena h2 {
+  @apply mt-12 mb-4 text-2xl font-bold tracking-tight text-ink sm:text-[28px];
+}
+.prose-raena h3 {
+  @apply mt-8 mb-3 text-xl font-semibold text-ink;
+}
+.prose-raena p {
+  @apply my-5;
+}
+.prose-raena ul,
+.prose-raena ol {
+  @apply my-5 space-y-2 pl-6;
+}
+.prose-raena ul {
+  @apply list-disc marker:text-violet;
+}
+.prose-raena ol {
+  @apply list-decimal marker:font-semibold marker:text-violet;
+}
+.prose-raena strong {
+  @apply font-semibold text-ink;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

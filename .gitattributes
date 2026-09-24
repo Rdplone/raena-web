@@ -1,0 +1,11 @@
+# Tüm metin dosyalarını depoda LF satır sonuyla sakla (Windows/macOS/Linux uyumu, Prettier ile tutarlı)
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.avif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
