@@ -1,6 +1,6 @@
 import { Breadcrumbs, PageHero } from "@/components/ui";
 import { pageMetadata } from "@/lib/seo";
-import { site } from "@/lib/site";
+import { fullAddress, site } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: "KVKK Aydınlatma Metni | RAENA",
@@ -50,14 +50,15 @@ export default function KvkkPage() {
           </p>
           <h2>Haklarınız</h2>
           <p>
-            KVKK md. 11 kapsamındaki haklarınıza ilişkin taleplerinizi{" "}
+            KVKK md. 11 kapsamındaki haklarınıza ilişkin taleplerinizi {fullAddress} adresine yazılı
+            olarak veya{" "}
             <a href={`mailto:${site.email}`} className="font-semibold text-violet underline">
               {site.email}
             </a>{" "}
             adresine iletebilirsiniz.
           </p>
           <p className="text-sm text-muted">
-            Not: Bu metin genel bir şablondur; yayına alınmadan önce şirket unvanı, adres ve MERSİS
+            Not: Bu metin genel bir şablondur; yayına alınmadan önce şirket unvanı ve MERSİS
             bilgileriyle güncellenmeli ve bir hukuk danışmanı tarafından kontrol edilmelidir.
           </p>
         </div>

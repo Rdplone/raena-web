@@ -1,7 +1,7 @@
 import { posts } from "@/content/blog";
 import { entryPackages, growth360, vipPackage } from "@/content/pricing";
 import { services } from "@/content/services";
-import { absoluteUrl, site } from "@/lib/site";
+import { absoluteUrl, fullAddress, site } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -35,7 +35,7 @@ ${posts.map((p) => `- [${p.title}](${absoluteUrl(`/blog/${p.slug}`)}): ${p.tldr}
 
 ## Optional
 - [Tüm içeriğin tam metni](${absoluteUrl("/llms-full.txt")})
-- İletişim: ${site.email} · Instagram: ${site.instagram}
+- İletişim: ${site.email} · Telefon: ${site.phone} · Adres: ${fullAddress} · Instagram: ${site.instagram}
 `;
   return new Response(body, {
     headers: {

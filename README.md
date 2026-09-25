@@ -74,21 +74,22 @@ Form `POST /api/contact` rotasına gönderilir. Rota Node.js runtime'ında çal�
 
 Vercel'de **Project → Settings → Environment Variables** altına şu değişkenleri ekleyin (Production ve Preview için):
 
-| Değişken                 | Örnek                               | Açıklama                                                  |
-| ------------------------ | ----------------------------------- | --------------------------------------------------------- |
-| `NEXT_PUBLIC_SITE_URL`   | `https://raena.agency`              | Canonical, sitemap ve OG için canlı adres                 |
-| `SMTP_HOST`              | `smtp.gmail.com`                    | SMTP sunucusu                                             |
-| `SMTP_PORT`              | `465`                               | 465 (SSL) veya 587 (STARTTLS)                             |
-| `SMTP_SECURE`            | `true`                              | 465 için `true`, 587 için `false`                         |
-| `SMTP_USER`              | `bildirim@raena.agency`             | SMTP kullanıcı adı                                        |
-| `SMTP_PASS`              | `••••`                              | SMTP şifresi / uygulama şifresi                           |
-| `CONTACT_FROM_EMAIL`     | `RAENA Web <bildirim@raena.agency>` | Gönderen (çoğu sağlayıcıda SMTP_USER ile aynı olmalı)     |
-| `CONTACT_TO_EMAIL`       | `info@raena.agency`                 | Başvuruların iletileceği adres(ler), virgülle ayrılabilir |
-| `CONTACT_SEND_AUTOREPLY` | `true`                              | Form dolduran kişiye otomatik teşekkür e-postası          |
+| Değişken                 | Örnek                                    | Açıklama                                                  |
+| ------------------------ | ---------------------------------------- | --------------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL`   | `https://raena.agency`                   | Canonical, sitemap ve OG için canlı adres                 |
+| `SMTP_HOST`              | `smtp.gmail.com`                         | SMTP sunucusu                                             |
+| `SMTP_PORT`              | `465`                                    | 465 (SSL) veya 587 (STARTTLS)                             |
+| `SMTP_SECURE`            | `true`                                   | 465 için `true`, 587 için `false`                         |
+| `SMTP_USER`              | `raenaplus@gmail.com`                    | SMTP kullanıcı adı                                        |
+| `SMTP_PASS`              | `xxxxxxxxxxxxxxxx`                       | SMTP şifresi / uygulama şifresi                           |
+| `CONTACT_FROM_EMAIL`     | `RAENA Web Sitesi <raenaplus@gmail.com>` | Gönderen (çoğu sağlayıcıda SMTP_USER ile aynı olmalı)     |
+| `CONTACT_TO_EMAIL`       | `raenaplus@gmail.com`                    | Başvuruların iletileceği adres(ler), virgülle ayrılabilir |
+| `CONTACT_SEND_AUTOREPLY` | `true`                                   | Form dolduran kişiye otomatik teşekkür e-postası          |
 
 Notlar:
 
-- Google Workspace kullanıyorsanız 2 adımlı doğrulamayı açıp bir **uygulama şifresi** oluşturun ve `SMTP_PASS` olarak kullanın.
+- Form Gmail (`raenaplus@gmail.com`) üzerinden gönderilir. `SMTP_PASS` normal Gmail şifresi değildir: Google Hesabı → Güvenlik → **2 Adımlı Doğrulama**yı açın, ardından [Uygulama şifreleri](https://myaccount.google.com/apppasswords) sayfasından "RAENA Web" adıyla bir şifre oluşturun ve 16 haneyi boşluksuz girin.
+- Gmail gönderim limiti günlük yaklaşık 500 e-postadır; form trafiği için yeterlidir.
 - Değişkenleri ekledikten sonra projeyi yeniden deploy edin.
 - Teslim edilebilirlik için alan adınızda SPF, DKIM ve DMARC kayıtlarının tanımlı olduğundan emin olun.
 - Yoğun spam gelirse bellek içi hız sınırı yerine Vercel KV / Upstash tabanlı bir sınırlayıcı veya Cloudflare Turnstile eklenebilir.

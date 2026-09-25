@@ -117,3 +117,14 @@ export const Clock = (p: P) => (
     <path d="M12 7.5V12l3 2" />
   </svg>
 );
+export const Phone = (p: P) => (
+  <svg {...base} {...p}>
+    <path d="M5 4h3.5l1.8 4.5-2.3 1.4a11 11 0 0 0 6.1 6.1l1.4-2.3L20 15.5V19a1.5 1.5 0 0 1-1.6 1.5A16.5 16.5 0 0 1 3.5 5.6 1.5 1.5 0 0 1 5 4Z" />
+  </svg>
+);
+export const MapPin = (p: P) => (
+  <svg {...base} {...p}>
+    <path d="M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21Z" />
+    <circle cx="12" cy="9.5" r="2.5" />
+  </svg>
+);

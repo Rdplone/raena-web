@@ -1,10 +1,10 @@
 import { Suspense } from "react";
 import { ContactForm } from "@/components/ContactForm";
-import { Instagram, Mail } from "@/components/Icons";
+import { Instagram, Mail, MapPin, Phone } from "@/components/Icons";
 import { JsonLd } from "@/components/JsonLd";
 import { Breadcrumbs, PageHero } from "@/components/ui";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
-import { absoluteUrl, site } from "@/lib/site";
+import { absoluteUrl, fullAddress, site } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: "İletişim: Ücretsiz Marka Analizi Talep Edin | RAENA",
@@ -64,6 +64,16 @@ export default function ContactPage() {
 
             <div className="mt-12 space-y-3">
               <a
+                href={site.phoneHref}
+                className="flex items-center gap-4 rounded-2xl border border-line p-5 transition hover:border-violet"
+              >
+                <Phone className="h-6 w-6 text-violet" />
+                <span>
+                  <span className="block text-xs text-muted">Telefon / WhatsApp</span>
+                  <span className="font-semibold text-ink">{site.phone}</span>
+                </span>
+              </a>
+              <a
                 href={`mailto:${site.email}`}
                 className="flex items-center gap-4 rounded-2xl border border-line p-5 transition hover:border-violet"
               >
@@ -83,6 +93,18 @@ export default function ContactPage() {
                 <span>
                   <span className="block text-xs text-muted">Instagram</span>
                   <span className="font-semibold text-ink">{site.instagramHandle}</span>
+                </span>
+              </a>
+              <a
+                href={site.mapsHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-4 rounded-2xl border border-line p-5 transition hover:border-violet"
+              >
+                <MapPin className="mt-0.5 h-6 w-6 shrink-0 text-violet" />
+                <span>
+                  <span className="block text-xs text-muted">Ofis</span>
+                  <address className="font-semibold text-ink not-italic">{fullAddress}</address>
                 </span>
               </a>
             </div>

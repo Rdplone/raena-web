@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { services } from "@/content/services";
-import { site } from "@/lib/site";
+import { fullAddress, site } from "@/lib/site";
 import { Logo } from "./Logo";
-import { Instagram, Mail } from "./Icons";
+import { Instagram, Mail, MapPin, Phone } from "./Icons";
 
 const columns = [
   {
@@ -42,6 +42,37 @@ export function Footer() {
             sisteminde birleştiren e-ticaret büyüme ve performans ajansı.
           </p>
           <p className="mt-6 text-sm font-semibold text-mint">{site.slogan}</p>
+          <ul className="mt-6 space-y-3 text-sm text-white/75">
+            <li>
+              <a
+                href={site.phoneHref}
+                className="flex items-center gap-3 transition hover:text-mint"
+              >
+                <Phone className="h-4 w-4 shrink-0 text-mint" />
+                {site.phone}
+              </a>
+            </li>
+            <li>
+              <a
+                href={`mailto:${site.email}`}
+                className="flex items-center gap-3 transition hover:text-mint"
+              >
+                <Mail className="h-4 w-4 shrink-0 text-mint" />
+                {site.email}
+              </a>
+            </li>
+            <li>
+              <a
+                href={site.mapsHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-3 leading-6 transition hover:text-mint"
+              >
+                <MapPin className="mt-1 h-4 w-4 shrink-0 text-mint" />
+                <address className="not-italic">{fullAddress}</address>
+              </a>
+            </li>
+          </ul>
           <div className="mt-6 flex gap-3">
             <a
               href={site.instagram}
