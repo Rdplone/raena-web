@@ -2,6 +2,32 @@
  * Sitenin tek merkezden yönetilen temel bilgileri.
  * İletişim bilgilerini ve sosyal medya adreslerini buradan güncelleyin.
  */
+const DEFAULT_SITE_URL = "https://raena.agency";
+
+/**
+ * Sitenin mutlak adresini güvenli şekilde belirler.
+ * Sıra: NEXT_PUBLIC_SITE_URL → Vercel production alan adı → Vercel deploy adresi → varsayılan.
+ * Boş, protokolsüz ("raena.agency") veya hatalı değerler build'i kırmaz.
+ */
+function resolveSiteUrl() {
+  const candidates = [
+    process.env.NEXT_PUBLIC_SITE_URL,
+    process.env.VERCEL_PROJECT_PRODUCTION_URL,
+    process.env.VERCEL_URL,
+  ];
+  for (const raw of candidates) {
+    const value = raw?.trim();
+    if (!value) continue;
+    const withProtocol = /^https?:\/\//i.test(value) ? value : `https://${value}`;
+    try {
+      return new URL(withProtocol).origin;
+    } catch {
+      // Geçersiz değer: bir sonraki adaya geç
+    }
+  }
+  return DEFAULT_SITE_URL;
+}
+
 export const site = {
   name: "RAENA",
   legalName: "RAENA E-Ticaret Büyüme Ajansı",
@@ -10,7 +36,7 @@ export const site = {
   shortPromise: "Hacmi büyüt. Verimi artır. Markayı güçlendir.",
   description:
     "RAENA; Trendyol mağaza yönetimi, Meta reklamları ve influencer marketing çalışmalarını tek bir ölçülebilir büyüme sisteminde birleştiren e-ticaret büyüme ve performans ajansıdır.",
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://raena.agency").replace(/\/$/, ""),
+  url: resolveSiteUrl(),
   locale: "tr_TR",
   email: "raenaplus@gmail.com",
   phone: "+90 538 691 29 67",
